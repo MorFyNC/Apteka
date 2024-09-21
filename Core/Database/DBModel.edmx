@@ -1,0 +1,1548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище AptekaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_street" Type="int" />
+          <Property Name="House" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" />
+          <Property Name="Skidka" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="Dogovor_na_okazanie_uslug">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Priema" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Dogovor_o_sotrudnichestve">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Id_postavshic" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Dolzhnost">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_adress" Type="int" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="id_dolzhnost" Type="int" />
+          <Property Name="Graphic_work" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kabinet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="number" Type="int" />
+        </EntityType>
+        <EntityType Name="Oborudovanie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_category" Type="int" />
+          <Property Name="Max_srok" Type="int" />
+          <Property Name="Min_ostatok" Type="int" />
+          <Property Name="ID_Sklad" Type="int" />
+          <Property Name="ID_kabinet" Type="int" />
+        </EntityType>
+        <EntityType Name="Pokupka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Client" Type="int" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Pokupka_preparat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_pokupka" Type="int" />
+          <Property Name="ID_preparat" Type="int" />
+          <Property Name="kolvo" Type="int" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_postavshic" Type="int" />
+          <Property Name="ID_sklad" Type="int" />
+          <Property Name="Data_zakaz" Type="date" />
+          <Property Name="Data_otgruzka" Type="date" />
+        </EntityType>
+        <EntityType Name="Postavka_zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_postavka" Type="int" />
+          <Property Name="ID_zakaz" Type="int" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Skidka" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="Postavshic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id_adress" Type="int" />
+          <Property Name="INN" Type="nchar" MaxLength="11" />
+          <Property Name="kodOKPO" Type="int" />
+          <Property Name="Phone" Type="nchar" MaxLength="11" />
+          <Property Name="Contacts" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Preparat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number_part" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="Priem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_specialist" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="ID_client" Type="int" />
+        </EntityType>
+        <EntityType Name="schet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_dogovora" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Number" Type="int" />
+        </EntityType>
+        <EntityType Name="Specialist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_employee" Type="int" />
+          <Property Name="ID_kabinet" Type="int" />
+          <Property Name="ID_type" Type="int" />
+        </EntityType>
+        <EntityType Name="Specialist_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_City" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="kolvo" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ID_preparat" Type="int" />
+        </EntityType>
+        <Association Name="FK_Adress_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="ID_street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_na_okazanie_uslug_Priem">
+          <End Role="Priem" Type="Self.Priem" Multiplicity="0..1" />
+          <End Role="Dogovor_na_okazanie_uslug" Type="Self.Dogovor_na_okazanie_uslug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dogovor_na_okazanie_uslug">
+              <PropertyRef Name="ID_Priema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_o_sotrudnichestve_Postavshic">
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="0..1" />
+          <End Role="Dogovor_o_sotrudnichestve" Type="Self.Dogovor_o_sotrudnichestve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dogovor_o_sotrudnichestve">
+              <PropertyRef Name="Id_postavshic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Dolzhnost">
+          <End Role="Dolzhnost" Type="Self.Dolzhnost" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnost">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_dolzhnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Kabinet">
+          <End Role="Kabinet" Type="Self.Kabinet" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_kabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_Sklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokupka_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Pokupka" Type="Self.Pokupka" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pokupka">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokupka_preparat_Pokupka">
+          <End Role="Pokupka" Type="Self.Pokupka" Multiplicity="0..1" />
+          <End Role="Pokupka_preparat" Type="Self.Pokupka_preparat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokupka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pokupka_preparat">
+              <PropertyRef Name="ID_pokupka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Postavshic">
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_postavshic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_preparat_Postavka">
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="0..1" />
+          <End Role="Postavka_zakaz" Type="Self.Postavka_zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka_zakaz">
+              <PropertyRef Name="ID_postavka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_sklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_zakaz_Zakaz">
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
+          <End Role="Postavka_zakaz" Type="Self.Postavka_zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakaz">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka_zakaz">
+              <PropertyRef Name="ID_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavshic_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavshic">
+              <PropertyRef Name="Id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Priem_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="ID_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Priem_Specialist">
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="ID_specialist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schet_Dogovor_na_okazanie_uslug">
+          <End Role="Dogovor_na_okazanie_uslug" Type="Self.Dogovor_na_okazanie_uslug" Multiplicity="0..1" />
+          <End Role="schet" Type="Self.schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor_na_okazanie_uslug">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="schet">
+              <PropertyRef Name="ID_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Kabinet">
+          <End Role="Kabinet" Type="Self.Kabinet" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_kabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Specialist_type">
+          <End Role="Specialist_type" Type="Self.Specialist_type" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialist_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Street_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="ID_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Preparat">
+          <End Role="Preparat" Type="Self.Preparat" Multiplicity="0..1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preparat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="ID_preparat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище AptekaModelContainer">
+          <EntitySet Name="Adress" EntityType="Self.Adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogovor_na_okazanie_uslug" EntityType="Self.Dogovor_na_okazanie_uslug" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogovor_o_sotrudnichestve" EntityType="Self.Dogovor_o_sotrudnichestve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolzhnost" EntityType="Self.Dolzhnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kabinet" EntityType="Self.Kabinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Oborudovanie" EntityType="Self.Oborudovanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokupka" EntityType="Self.Pokupka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokupka_preparat" EntityType="Self.Pokupka_preparat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavka" EntityType="Self.Postavka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavka_zakaz" EntityType="Self.Postavka_zakaz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Postavshic" EntityType="Self.Postavshic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preparat" EntityType="Self.Preparat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Priem" EntityType="Self.Priem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schet" EntityType="Self.schet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialist" EntityType="Self.Specialist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialist_type" EntityType="Self.Specialist_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Adress_Street" Association="Self.FK_Adress_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_na_okazanie_uslug_Priem" Association="Self.FK_Dogovor_na_okazanie_uslug_Priem">
+            <End Role="Priem" EntitySet="Priem" />
+            <End Role="Dogovor_na_okazanie_uslug" EntitySet="Dogovor_na_okazanie_uslug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_o_sotrudnichestve_Postavshic" Association="Self.FK_Dogovor_o_sotrudnichestve_Postavshic">
+            <End Role="Postavshic" EntitySet="Postavshic" />
+            <End Role="Dogovor_o_sotrudnichestve" EntitySet="Dogovor_o_sotrudnichestve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress" Association="Self.FK_Employee_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Dolzhnost" Association="Self.FK_Employee_Dolzhnost">
+            <End Role="Dolzhnost" EntitySet="Dolzhnost" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Category" Association="Self.FK_Oborudovanie_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Kabinet" Association="Self.FK_Oborudovanie_Kabinet">
+            <End Role="Kabinet" EntitySet="Kabinet" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Sklad" Association="Self.FK_Oborudovanie_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokupka_Client" Association="Self.FK_Pokupka_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Pokupka" EntitySet="Pokupka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokupka_preparat_Pokupka" Association="Self.FK_Pokupka_preparat_Pokupka">
+            <End Role="Pokupka" EntitySet="Pokupka" />
+            <End Role="Pokupka_preparat" EntitySet="Pokupka_preparat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Postavshic" Association="Self.FK_Postavka_Postavshic">
+            <End Role="Postavshic" EntitySet="Postavshic" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_preparat_Postavka" Association="Self.FK_Postavka_preparat_Postavka">
+            <End Role="Postavka" EntitySet="Postavka" />
+            <End Role="Postavka_zakaz" EntitySet="Postavka_zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Sklad" Association="Self.FK_Postavka_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_zakaz_Zakaz" Association="Self.FK_Postavka_zakaz_Zakaz">
+            <End Role="Zakaz" EntitySet="Zakaz" />
+            <End Role="Postavka_zakaz" EntitySet="Postavka_zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavshic_Adress" Association="Self.FK_Postavshic_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Postavshic" EntitySet="Postavshic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Priem_Client" Association="Self.FK_Priem_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Priem_Specialist" Association="Self.FK_Priem_Specialist">
+            <End Role="Specialist" EntitySet="Specialist" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schet_Dogovor_na_okazanie_uslug" Association="Self.FK_schet_Dogovor_na_okazanie_uslug">
+            <End Role="Dogovor_na_okazanie_uslug" EntitySet="Dogovor_na_okazanie_uslug" />
+            <End Role="schet" EntitySet="schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Employee" Association="Self.FK_Specialist_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Kabinet" Association="Self.FK_Specialist_Kabinet">
+            <End Role="Kabinet" EntitySet="Kabinet" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Specialist_type" Association="Self.FK_Specialist_Specialist_type">
+            <End Role="Specialist_type" EntitySet="Specialist_type" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Street_City" Association="Self.FK_Street_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Preparat" Association="Self.FK_Zakaz_Preparat">
+            <End Role="Preparat" EntitySet="Preparat" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AptekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_street" Type="Int32" />
+          <Property Name="House" Type="Int32" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Adress_Street" FromRole="Adress" ToRole="Street" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Adress" FromRole="Adress" ToRole="Employee" />
+          <NavigationProperty Name="Postavshic" Relationship="Self.FK_Postavshic_Adress" FromRole="Adress" ToRole="Postavshic" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Oborudovanie" Relationship="Self.FK_Oborudovanie_Category" FromRole="Category" ToRole="Oborudovanie" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Street_City" FromRole="City" ToRole="Street" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Skidka" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Pokupka" Relationship="Self.FK_Pokupka_Client" FromRole="Client" ToRole="Pokupka" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK_Priem_Client" FromRole="Client" ToRole="Priem" />
+        </EntityType>
+        <EntityType Name="Dogovor_na_okazanie_uslug">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Priema" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK_Dogovor_na_okazanie_uslug_Priem" FromRole="Dogovor_na_okazanie_uslug" ToRole="Priem" />
+          <NavigationProperty Name="schet" Relationship="Self.FK_schet_Dogovor_na_okazanie_uslug" FromRole="Dogovor_na_okazanie_uslug" ToRole="schet" />
+        </EntityType>
+        <EntityType Name="Dogovor_o_sotrudnichestve">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Id_postavshic" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Postavshic" Relationship="Self.FK_Dogovor_o_sotrudnichestve_Postavshic" FromRole="Dogovor_o_sotrudnichestve" ToRole="Postavshic" />
+        </EntityType>
+        <EntityType Name="Dolzhnost">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Dolzhnost" FromRole="Dolzhnost" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_adress" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="id_dolzhnost" Type="Int32" />
+          <Property Name="Graphic_work" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Employee_Adress" FromRole="Employee" ToRole="Adress" />
+          <NavigationProperty Name="Dolzhnost" Relationship="Self.FK_Employee_Dolzhnost" FromRole="Employee" ToRole="Dolzhnost" />
+          <NavigationProperty Name="Specialist" Relationship="Self.FK_Specialist_Employee" FromRole="Employee" ToRole="Specialist" />
+        </EntityType>
+        <EntityType Name="Kabinet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="number" Type="Int32" />
+          <NavigationProperty Name="Oborudovanie" Relationship="Self.FK_Oborudovanie_Kabinet" FromRole="Kabinet" ToRole="Oborudovanie" />
+          <NavigationProperty Name="Specialist" Relationship="Self.FK_Specialist_Kabinet" FromRole="Kabinet" ToRole="Specialist" />
+        </EntityType>
+        <EntityType Name="Oborudovanie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_category" Type="Int32" />
+          <Property Name="Max_srok" Type="Int32" />
+          <Property Name="Min_ostatok" Type="Int32" />
+          <Property Name="ID_Sklad" Type="Int32" />
+          <Property Name="ID_kabinet" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Oborudovanie_Category" FromRole="Oborudovanie" ToRole="Category" />
+          <NavigationProperty Name="Kabinet" Relationship="Self.FK_Oborudovanie_Kabinet" FromRole="Oborudovanie" ToRole="Kabinet" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_Oborudovanie_Sklad" FromRole="Oborudovanie" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="Pokupka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Client" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Pokupka_Client" FromRole="Pokupka" ToRole="Client" />
+          <NavigationProperty Name="Pokupka_preparat" Relationship="Self.FK_Pokupka_preparat_Pokupka" FromRole="Pokupka" ToRole="Pokupka_preparat" />
+        </EntityType>
+        <EntityType Name="Pokupka_preparat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_pokupka" Type="Int32" />
+          <Property Name="ID_preparat" Type="Int32" />
+          <Property Name="kolvo" Type="Int32" />
+          <NavigationProperty Name="Pokupka" Relationship="Self.FK_Pokupka_preparat_Pokupka" FromRole="Pokupka_preparat" ToRole="Pokupka" />
+        </EntityType>
+        <EntityType Name="Postavka">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_postavshic" Type="Int32" />
+          <Property Name="ID_sklad" Type="Int32" />
+          <Property Name="Data_zakaz" Type="DateTime" Precision="0" />
+          <Property Name="Data_otgruzka" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Postavshic" Relationship="Self.FK_Postavka_Postavshic" FromRole="Postavka" ToRole="Postavshic" />
+          <NavigationProperty Name="Postavka_zakaz" Relationship="Self.FK_Postavka_preparat_Postavka" FromRole="Postavka" ToRole="Postavka_zakaz" />
+          <NavigationProperty Name="Sklad" Relationship="Self.FK_Postavka_Sklad" FromRole="Postavka" ToRole="Sklad" />
+        </EntityType>
+        <EntityType Name="Postavka_zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_postavka" Type="Int32" />
+          <Property Name="ID_zakaz" Type="Int32" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Skidka" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Postavka_preparat_Postavka" FromRole="Postavka_zakaz" ToRole="Postavka" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK_Postavka_zakaz_Zakaz" FromRole="Postavka_zakaz" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Postavshic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id_adress" Type="Int32" />
+          <Property Name="INN" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="kodOKPO" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <Property Name="Contacts" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Postavshic_Adress" FromRole="Postavshic" ToRole="Adress" />
+          <NavigationProperty Name="Dogovor_o_sotrudnichestve" Relationship="Self.FK_Dogovor_o_sotrudnichestve_Postavshic" FromRole="Postavshic" ToRole="Dogovor_o_sotrudnichestve" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Postavka_Postavshic" FromRole="Postavshic" ToRole="Postavka" />
+        </EntityType>
+        <EntityType Name="Preparat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number_part" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Preparat" FromRole="Preparat" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Priem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_specialist" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="ID_client" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Priem_Client" FromRole="Priem" ToRole="Client" />
+          <NavigationProperty Name="Dogovor_na_okazanie_uslug" Relationship="Self.FK_Dogovor_na_okazanie_uslug_Priem" FromRole="Priem" ToRole="Dogovor_na_okazanie_uslug" />
+          <NavigationProperty Name="Specialist" Relationship="Self.FK_Priem_Specialist" FromRole="Priem" ToRole="Specialist" />
+        </EntityType>
+        <EntityType Name="schet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_dogovora" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Dogovor_na_okazanie_uslug" Relationship="Self.FK_schet_Dogovor_na_okazanie_uslug" FromRole="schet" ToRole="Dogovor_na_okazanie_uslug" />
+        </EntityType>
+        <EntityType Name="Sklad">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int32" />
+          <NavigationProperty Name="Oborudovanie" Relationship="Self.FK_Oborudovanie_Sklad" FromRole="Sklad" ToRole="Oborudovanie" />
+          <NavigationProperty Name="Postavka" Relationship="Self.FK_Postavka_Sklad" FromRole="Sklad" ToRole="Postavka" />
+        </EntityType>
+        <EntityType Name="Specialist">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_employee" Type="Int32" />
+          <Property Name="ID_kabinet" Type="Int32" />
+          <Property Name="ID_type" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Specialist_Employee" FromRole="Specialist" ToRole="Employee" />
+          <NavigationProperty Name="Kabinet" Relationship="Self.FK_Specialist_Kabinet" FromRole="Specialist" ToRole="Kabinet" />
+          <NavigationProperty Name="Priem" Relationship="Self.FK_Priem_Specialist" FromRole="Specialist" ToRole="Priem" />
+          <NavigationProperty Name="Specialist_type" Relationship="Self.FK_Specialist_Specialist_type" FromRole="Specialist" ToRole="Specialist_type" />
+        </EntityType>
+        <EntityType Name="Specialist_type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Specialist" Relationship="Self.FK_Specialist_Specialist_type" FromRole="Specialist_type" ToRole="Specialist" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_City" Type="Int32" />
+          <NavigationProperty Name="Adress" Relationship="Self.FK_Adress_Street" FromRole="Street" ToRole="Adress" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Street_City" FromRole="Street" ToRole="City" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Zakaz">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="kolvo" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ID_preparat" Type="Int32" />
+          <NavigationProperty Name="Postavka_zakaz" Relationship="Self.FK_Postavka_zakaz_Zakaz" FromRole="Zakaz" ToRole="Postavka_zakaz" />
+          <NavigationProperty Name="Preparat" Relationship="Self.FK_Zakaz_Preparat" FromRole="Zakaz" ToRole="Preparat" />
+        </EntityType>
+        <Association Name="FK_Adress_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="0..1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Adress">
+              <PropertyRef Name="ID_street" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="ID_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavshic_Adress">
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adress">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavshic">
+              <PropertyRef Name="Id_adress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Street_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="ID_City" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokupka_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Pokupka" Type="Self.Pokupka" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pokupka">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Priem_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="ID_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_na_okazanie_uslug_Priem">
+          <End Role="Priem" Type="Self.Priem" Multiplicity="0..1" />
+          <End Role="Dogovor_na_okazanie_uslug" Type="Self.Dogovor_na_okazanie_uslug" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Priem">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dogovor_na_okazanie_uslug">
+              <PropertyRef Name="ID_Priema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_schet_Dogovor_na_okazanie_uslug">
+          <End Role="Dogovor_na_okazanie_uslug" Type="Self.Dogovor_na_okazanie_uslug" Multiplicity="0..1" />
+          <End Role="schet" Type="Self.schet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor_na_okazanie_uslug">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="schet">
+              <PropertyRef Name="ID_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_o_sotrudnichestve_Postavshic">
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="0..1" />
+          <End Role="Dogovor_o_sotrudnichestve" Type="Self.Dogovor_o_sotrudnichestve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Dogovor_o_sotrudnichestve">
+              <PropertyRef Name="Id_postavshic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Dolzhnost">
+          <End Role="Dolzhnost" Type="Self.Dolzhnost" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dolzhnost">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_dolzhnost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Kabinet">
+          <End Role="Kabinet" Type="Self.Kabinet" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_kabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Kabinet">
+          <End Role="Kabinet" Type="Self.Kabinet" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kabinet">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_kabinet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Oborudovanie_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="0..1" />
+          <End Role="Oborudovanie" Type="Self.Oborudovanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Oborudovanie">
+              <PropertyRef Name="ID_Sklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokupka_preparat_Pokupka">
+          <End Role="Pokupka" Type="Self.Pokupka" Multiplicity="0..1" />
+          <End Role="Pokupka_preparat" Type="Self.Pokupka_preparat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokupka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Pokupka_preparat">
+              <PropertyRef Name="ID_pokupka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Postavshic">
+          <End Role="Postavshic" Type="Self.Postavshic" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavshic">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_postavshic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_preparat_Postavka">
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="0..1" />
+          <End Role="Postavka_zakaz" Type="Self.Postavka_zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Postavka">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka_zakaz">
+              <PropertyRef Name="ID_postavka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_Sklad">
+          <End Role="Sklad" Type="Self.Sklad" Multiplicity="0..1" />
+          <End Role="Postavka" Type="Self.Postavka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sklad">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka">
+              <PropertyRef Name="ID_sklad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Postavka_zakaz_Zakaz">
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="0..1" />
+          <End Role="Postavka_zakaz" Type="Self.Postavka_zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zakaz">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Postavka_zakaz">
+              <PropertyRef Name="ID_zakaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zakaz_Preparat">
+          <End Role="Preparat" Type="Self.Preparat" Multiplicity="0..1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Preparat">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="ID_preparat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Priem_Specialist">
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="0..1" />
+          <End Role="Priem" Type="Self.Priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialist">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Priem">
+              <PropertyRef Name="ID_specialist" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Specialist_Specialist_type">
+          <End Role="Specialist_type" Type="Self.Specialist_type" Multiplicity="0..1" />
+          <End Role="Specialist" Type="Self.Specialist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialist_type">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Specialist">
+              <PropertyRef Name="ID_type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AptekaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adress" EntityType="Self.Adress" />
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Dogovor_na_okazanie_uslug" EntityType="Self.Dogovor_na_okazanie_uslug" />
+          <EntitySet Name="Dogovor_o_sotrudnichestve" EntityType="Self.Dogovor_o_sotrudnichestve" />
+          <EntitySet Name="Dolzhnost" EntityType="Self.Dolzhnost" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Kabinet" EntityType="Self.Kabinet" />
+          <EntitySet Name="Oborudovanie" EntityType="Self.Oborudovanie" />
+          <EntitySet Name="Pokupka" EntityType="Self.Pokupka" />
+          <EntitySet Name="Pokupka_preparat" EntityType="Self.Pokupka_preparat" />
+          <EntitySet Name="Postavka" EntityType="Self.Postavka" />
+          <EntitySet Name="Postavka_zakaz" EntityType="Self.Postavka_zakaz" />
+          <EntitySet Name="Postavshic" EntityType="Self.Postavshic" />
+          <EntitySet Name="Preparat" EntityType="Self.Preparat" />
+          <EntitySet Name="Priem" EntityType="Self.Priem" />
+          <EntitySet Name="schet" EntityType="Self.schet" />
+          <EntitySet Name="Sklad" EntityType="Self.Sklad" />
+          <EntitySet Name="Specialist" EntityType="Self.Specialist" />
+          <EntitySet Name="Specialist_type" EntityType="Self.Specialist_type" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
+          <AssociationSet Name="FK_Adress_Street" Association="Self.FK_Adress_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Adress" EntitySet="Adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Adress" Association="Self.FK_Employee_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavshic_Adress" Association="Self.FK_Postavshic_Adress">
+            <End Role="Adress" EntitySet="Adress" />
+            <End Role="Postavshic" EntitySet="Postavshic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Category" Association="Self.FK_Oborudovanie_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Street_City" Association="Self.FK_Street_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Street" EntitySet="Street" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokupka_Client" Association="Self.FK_Pokupka_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Pokupka" EntitySet="Pokupka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Priem_Client" Association="Self.FK_Priem_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_na_okazanie_uslug_Priem" Association="Self.FK_Dogovor_na_okazanie_uslug_Priem">
+            <End Role="Priem" EntitySet="Priem" />
+            <End Role="Dogovor_na_okazanie_uslug" EntitySet="Dogovor_na_okazanie_uslug" />
+          </AssociationSet>
+          <AssociationSet Name="FK_schet_Dogovor_na_okazanie_uslug" Association="Self.FK_schet_Dogovor_na_okazanie_uslug">
+            <End Role="Dogovor_na_okazanie_uslug" EntitySet="Dogovor_na_okazanie_uslug" />
+            <End Role="schet" EntitySet="schet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_o_sotrudnichestve_Postavshic" Association="Self.FK_Dogovor_o_sotrudnichestve_Postavshic">
+            <End Role="Postavshic" EntitySet="Postavshic" />
+            <End Role="Dogovor_o_sotrudnichestve" EntitySet="Dogovor_o_sotrudnichestve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Dolzhnost" Association="Self.FK_Employee_Dolzhnost">
+            <End Role="Dolzhnost" EntitySet="Dolzhnost" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Employee" Association="Self.FK_Specialist_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Kabinet" Association="Self.FK_Oborudovanie_Kabinet">
+            <End Role="Kabinet" EntitySet="Kabinet" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Kabinet" Association="Self.FK_Specialist_Kabinet">
+            <End Role="Kabinet" EntitySet="Kabinet" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Oborudovanie_Sklad" Association="Self.FK_Oborudovanie_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Oborudovanie" EntitySet="Oborudovanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokupka_preparat_Pokupka" Association="Self.FK_Pokupka_preparat_Pokupka">
+            <End Role="Pokupka" EntitySet="Pokupka" />
+            <End Role="Pokupka_preparat" EntitySet="Pokupka_preparat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Postavshic" Association="Self.FK_Postavka_Postavshic">
+            <End Role="Postavshic" EntitySet="Postavshic" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_preparat_Postavka" Association="Self.FK_Postavka_preparat_Postavka">
+            <End Role="Postavka" EntitySet="Postavka" />
+            <End Role="Postavka_zakaz" EntitySet="Postavka_zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_Sklad" Association="Self.FK_Postavka_Sklad">
+            <End Role="Sklad" EntitySet="Sklad" />
+            <End Role="Postavka" EntitySet="Postavka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Postavka_zakaz_Zakaz" Association="Self.FK_Postavka_zakaz_Zakaz">
+            <End Role="Zakaz" EntitySet="Zakaz" />
+            <End Role="Postavka_zakaz" EntitySet="Postavka_zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Preparat" Association="Self.FK_Zakaz_Preparat">
+            <End Role="Preparat" EntitySet="Preparat" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Priem_Specialist" Association="Self.FK_Priem_Specialist">
+            <End Role="Specialist" EntitySet="Specialist" />
+            <End Role="Priem" EntitySet="Priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Specialist_Specialist_type" Association="Self.FK_Specialist_Specialist_type">
+            <End Role="Specialist_type" EntitySet="Specialist_type" />
+            <End Role="Specialist" EntitySet="Specialist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AptekaModelContainer" CdmEntityContainer="AptekaEntities">
+          <EntitySetMapping Name="Adress">
+            <EntityTypeMapping TypeName="AptekaModel.Adress">
+              <MappingFragment StoreEntitySet="Adress">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_street" ColumnName="ID_street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="AptekaModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="AptekaModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="AptekaModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Skidka" ColumnName="Skidka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogovor_na_okazanie_uslug">
+            <EntityTypeMapping TypeName="AptekaModel.Dogovor_na_okazanie_uslug">
+              <MappingFragment StoreEntitySet="Dogovor_na_okazanie_uslug">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Priema" ColumnName="ID_Priema" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogovor_o_sotrudnichestve">
+            <EntityTypeMapping TypeName="AptekaModel.Dogovor_o_sotrudnichestve">
+              <MappingFragment StoreEntitySet="Dogovor_o_sotrudnichestve">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id_postavshic" ColumnName="Id_postavshic" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolzhnost">
+            <EntityTypeMapping TypeName="AptekaModel.Dolzhnost">
+              <MappingFragment StoreEntitySet="Dolzhnost">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="AptekaModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="ID_adress" ColumnName="ID_adress" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="id_dolzhnost" ColumnName="id_dolzhnost" />
+                <ScalarProperty Name="Graphic_work" ColumnName="Graphic_work" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kabinet">
+            <EntityTypeMapping TypeName="AptekaModel.Kabinet">
+              <MappingFragment StoreEntitySet="Kabinet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="number" ColumnName="number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Oborudovanie">
+            <EntityTypeMapping TypeName="AptekaModel.Oborudovanie">
+              <MappingFragment StoreEntitySet="Oborudovanie">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_category" ColumnName="ID_category" />
+                <ScalarProperty Name="Max_srok" ColumnName="Max_srok" />
+                <ScalarProperty Name="Min_ostatok" ColumnName="Min_ostatok" />
+                <ScalarProperty Name="ID_Sklad" ColumnName="ID_Sklad" />
+                <ScalarProperty Name="ID_kabinet" ColumnName="ID_kabinet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokupka">
+            <EntityTypeMapping TypeName="AptekaModel.Pokupka">
+              <MappingFragment StoreEntitySet="Pokupka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokupka_preparat">
+            <EntityTypeMapping TypeName="AptekaModel.Pokupka_preparat">
+              <MappingFragment StoreEntitySet="Pokupka_preparat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_pokupka" ColumnName="ID_pokupka" />
+                <ScalarProperty Name="ID_preparat" ColumnName="ID_preparat" />
+                <ScalarProperty Name="kolvo" ColumnName="kolvo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavka">
+            <EntityTypeMapping TypeName="AptekaModel.Postavka">
+              <MappingFragment StoreEntitySet="Postavka">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_postavshic" ColumnName="ID_postavshic" />
+                <ScalarProperty Name="ID_sklad" ColumnName="ID_sklad" />
+                <ScalarProperty Name="Data_zakaz" ColumnName="Data_zakaz" />
+                <ScalarProperty Name="Data_otgruzka" ColumnName="Data_otgruzka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavka_zakaz">
+            <EntityTypeMapping TypeName="AptekaModel.Postavka_zakaz">
+              <MappingFragment StoreEntitySet="Postavka_zakaz">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_postavka" ColumnName="ID_postavka" />
+                <ScalarProperty Name="ID_zakaz" ColumnName="ID_zakaz" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Skidka" ColumnName="Skidka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Postavshic">
+            <EntityTypeMapping TypeName="AptekaModel.Postavshic">
+              <MappingFragment StoreEntitySet="Postavshic">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_adress" ColumnName="Id_adress" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="kodOKPO" ColumnName="kodOKPO" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Contacts" ColumnName="Contacts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preparat">
+            <EntityTypeMapping TypeName="AptekaModel.Preparat">
+              <MappingFragment StoreEntitySet="Preparat">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number_part" ColumnName="Number_part" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Priem">
+            <EntityTypeMapping TypeName="AptekaModel.Priem">
+              <MappingFragment StoreEntitySet="Priem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_specialist" ColumnName="ID_specialist" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID_client" ColumnName="ID_client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schet">
+            <EntityTypeMapping TypeName="AptekaModel.schet">
+              <MappingFragment StoreEntitySet="schet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_dogovora" ColumnName="ID_dogovora" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sklad">
+            <EntityTypeMapping TypeName="AptekaModel.Sklad">
+              <MappingFragment StoreEntitySet="Sklad">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialist">
+            <EntityTypeMapping TypeName="AptekaModel.Specialist">
+              <MappingFragment StoreEntitySet="Specialist">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
+                <ScalarProperty Name="ID_kabinet" ColumnName="ID_kabinet" />
+                <ScalarProperty Name="ID_type" ColumnName="ID_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialist_type">
+            <EntityTypeMapping TypeName="AptekaModel.Specialist_type">
+              <MappingFragment StoreEntitySet="Specialist_type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="AptekaModel.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_City" ColumnName="ID_City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AptekaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zakaz">
+            <EntityTypeMapping TypeName="AptekaModel.Zakaz">
+              <MappingFragment StoreEntitySet="Zakaz">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kolvo" ColumnName="kolvo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID_preparat" ColumnName="ID_preparat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
